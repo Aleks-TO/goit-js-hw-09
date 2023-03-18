@@ -7,6 +7,7 @@ function getRandomHexColor() {
 const startBtn = document.querySelector('[data-start]');
 const stopBtn = document.querySelector('[data-stop]');
 const bodyEl = document.querySelector('body');
+let timerId = null;
 // console.log(bodyEl);
 
 // ставимо слухача подій на кнопки
@@ -14,7 +15,7 @@ startBtn.addEventListener('click', handleChangeBg);
 
 function handleChangeBg() {
   // поставимо таймер
-  const timerId = setInterval(() => {
+  timerId = setInterval(() => {
     const randomColor = getRandomHexColor();
     bodyEl.style.backgroundColor = randomColor;
   }, 1000);
