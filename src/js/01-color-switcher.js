@@ -8,13 +8,14 @@ const startBtn = document.querySelector('button[data-start]');
 const stopBtn = document.querySelector('button[data-stop]');
 const bodyEl = document.querySelector('body');
 let timerId = null;
-// console.log(bodyEl);
+console.log(stopBtn);
 
 // ставимо слухача подій на кнопки
 startBtn.addEventListener('click', handleChangeBg);
 
 function handleChangeBg() {
   // поставимо таймер
+  startBtn.disabled = true;
   timerId = setInterval(() => {
     const randomColor = getRandomHexColor();
     bodyEl.style.backgroundColor = randomColor;
@@ -22,4 +23,7 @@ function handleChangeBg() {
   return timerId;
 }
 
-stopBtn.addEventListener('click', () => clearInterval(timerId));
+stopBtn.addEventListener('click', () => {
+  clearInterval(timerId);
+  startBtn.disabled = false;
+});
